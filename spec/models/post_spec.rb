@@ -7,6 +7,8 @@ RSpec.describe Post, type: :model do
   it { should validate_presence_of(:body) }
   it { should validate_length_of(:body).is_at_least(3).is_at_most(1400) }
 
-  it { should have_many(:topics).through(:post_topics) }
+  it { should have_many(:topics).through(:post_topic) }
+
+  it { should accept_nested_attributes_for(:topics).allow_destroy(true) }
 
 end
